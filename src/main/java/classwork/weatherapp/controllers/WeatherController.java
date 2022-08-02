@@ -27,6 +27,7 @@ public class WeatherController {
     @GetMapping
     public String getWeather(Model model, @RequestParam String city) {
         List<Weather> result = weatherSvc.getWeather(city);
+        model.addAttribute("city", city);
         model.addAttribute("result", result);
         return "weather";
     }
