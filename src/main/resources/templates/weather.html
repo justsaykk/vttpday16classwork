@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./weather.css">
+
+</head>
+
+<body>
+    <div class="content">
+        <h1>Weather for <span data-th-text="${city}"></span></h1>
+        <table>
+            <thead>
+                <td></td>
+                <td>Weather</td>
+                <td>Details</td>
+            </thead>
+            <tr data-th-each="result: ${result}">
+                <td><img data-th-src="@{http://openweathermap.org/img/wn/{icon}@2x.png(icon=${result.icon})}" /></td>
+                <td data-th-text="${result.name}"></td>
+                <td data-th-text="${result.description}"></td>
+            </tr>
+        </table>
+        <button onclick="history.back()">Go Back</button>
+    </div>
+</body>
+
+</html>

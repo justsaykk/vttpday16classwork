@@ -1,0 +1,8 @@
+.content {
+    margin-left: 50%;
+}
+
+.resultWrapper {
+    display: flex;
+    justify-content: center;
+}
