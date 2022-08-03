@@ -90,8 +90,8 @@ public class AppConfig {
 And we want to call `config2`, we'll need such a code:
 
 ```java
-    @Autowire
-    private RedisTemplate<String, String> redisConfig2;
+@Autowire
+private RedisTemplate<String, String> redisConfig2;
 ```
 
 However, we will run into problems if we want to call `config1` as it shares the same signatures as `config3`.
