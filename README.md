@@ -62,7 +62,7 @@ weatherRepo.save(payload, city);
 ```
 # Notes on @Autowired and @Bean
 
-`@Autowired` will look for distinct `@Bean`.
+`@Autowire` will look for distinct `@Bean`.
 
 Therefore, lets say we have such a configuration file:
 
