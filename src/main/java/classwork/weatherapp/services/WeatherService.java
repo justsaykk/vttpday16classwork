@@ -45,6 +45,7 @@ public class WeatherService {
 
             System.out.println("Getting weather from API");
 
+            // Crafting the URL to fetch
             String url = UriComponentsBuilder.fromUriString(api)
                     .queryParam("q", city)
                     .queryParam("appid", apiKey)
