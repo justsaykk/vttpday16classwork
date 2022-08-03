@@ -31,9 +31,11 @@ public class WeatherController {
 }
 ```
 # How to "fetch" from an API?
-Step 1: You'll need the base url</br>
-<code>https://api.openweathermap.org/data/2.5/weather</code></br>
-Step 2: Build the url by adding the query parameters: </br>
+Step 1: You'll need the base url
+
+<code>https://api.openweathermap.org/data/2.5/weather</code>
+
+Step 2: Build the url by adding the query parameters:
 
 ```java
 String payload;
@@ -57,6 +59,72 @@ try {
 // Get the payload
 payload = res.getBody();
 weatherRepo.save(payload, city);
+```
+# Notes on @Autowired and @Bean
+
+`@Autowired` will look for distinct `@Bean`.
+
+Therefore, lets say we have such a configuration file:
+
+```java
+@Configuration
+public class AppConfig {
+    
+    @Bean
+    RedisTemplate<Long, String> config1() {
+        // code
+    }
+
+    @Bean
+    RedisTemplate<String, String> config2() {
+        // code
+    }
+
+    @Bean
+    RedisTemplate<Long, String> config3() {
+        // code
+    }
+}
+```
+
+And we want to call `config2`, we'll need such a code:
+
+```java
+    @Autowire
+    private RedisTemplate<String, String> redisConfig2;
+```
+
+However, we will run into problems if we want to call `config1` as it shares the same signatures as `config3`.
+
+Therefore there needs to be another layer of annotation:
+
+```java
+@Configuration
+public class AppConfig {
+    
+    @Bean("config1")
+    RedisTemplate<Long, String> config1() {
+        // code
+    }
+
+    @Bean
+    RedisTemplate<String, String> config2() {
+        // code
+    }
+
+    @Bean
+    RedisTemplate<Long, String> config3() {
+        // code
+    }
+}
+```
+
+And to call that specific `@Bean`, we would need the `@Qualifier` annotation:
+
+```java
+@Autowire
+@Qualifier("config1")
+private RedisTemplate<String, String> redisConfig1;
 ```
 
 
