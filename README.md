@@ -27,6 +27,7 @@ public class WeatherController {
 Step 1: You'll need the base url</br>
 <code>https://api.openweathermap.org/data/2.5/weather</code></br>
 Step 2: Build the url by adding the query parameters: </br>
+
 ```java
 String payload;
 ResponseEntity<String> res;
