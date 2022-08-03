@@ -8,7 +8,7 @@ If given a HTML element that looks like this: </br>
 ``` 
 </br>
 The above HTML code would produce a HTTP request that looks like this: </br>
-`GET /cities?city=<value>`
+<code>GET /cities?city=<value></code>
 </br>
 
 And the required controller to handle such a request would look like this: </br>
