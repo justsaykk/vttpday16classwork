@@ -1,21 +1,23 @@
 # Relationships between elements of MVC
 
-If given a HTML element that looks like this: </br>
+If given a HTML element that looks like this:
+
 ```html
 <form method="GET" action="cities">
     <input type="text" name="city">
 </form>
 ``` 
 
-The above HTML code would produce a HTTP request that looks like this: </br>
+The above HTML code would produce a HTTP request that looks like this:
 
 ```xml
 GET /cities?city=berlin
 content-type: application/x-www-form-urlencoded
 ```
-> The content type is present in the request because we're using a form to query.</br>
 
-And the required controller to handle such a request would look like this: </br>
+> The content type is present in the request because we're using a form to query.
+
+And the required controller to handle such a request would look like this:
 
 ```java
 @Controller
