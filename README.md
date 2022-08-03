@@ -8,14 +8,15 @@ If given a HTML element that looks like this: </br>
 ``` 
 </br>
 The above HTML code would produce a HTTP request that looks like this: </br>
-```xml
+```
 GET /cities?city=berlin
 content-type: application/x-www-form-urlencoded
 ```
 </br>
-The content type is present in the request because we're using a <code><form></code>
-
+> The content type is present in the request because we're using a form to query.
+</br>
 And the required controller to handle such a request would look like this: </br>
+
 ```java
 @Controller
 @RequestMapping(path = "/cities")
