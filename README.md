@@ -6,7 +6,7 @@ If given a HTML element that looks like this: </br>
     <input type="text" name="city">
 </form>
 ``` 
-</br>
+
 The above HTML code would produce a HTTP request that looks like this: </br>
 
 ```xml
