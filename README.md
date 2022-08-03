@@ -28,10 +28,27 @@ Step 1: You'll need the base url</br>
 <code>https://api.openweathermap.org/data/2.5/weather</code></br>
 Step 2: Build the url by adding the query parameters: </br>
 ```java
+String payload;
+ResponseEntity<String> res;
+
+// Crafting the URL to fetch
 String url = UriComponentsBuilder.fromUriString(api)
         .queryParam("q", city)
         .queryParam("appid", apiKey)
         .toUriString();
+
+// Make the api call
+RestTemplate template = new RestTemplate();
+try {
+    res = template.exchange(req, String.class);
+} catch (Exception e) {
+    System.err.println(e);
+    return Collections.emptyList();
+}
+
+// Get the payload
+payload = res.getBody();
+weatherRepo.save(payload, city);
 ```
 
 
